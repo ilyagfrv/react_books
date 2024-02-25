@@ -1,9 +1,22 @@
 import './App.css'
 
+import { TheHeader, Form, Filter, List } from './components'
+
 export default function App() {
   return (
-    <div>
-      <h1>React Books App</h1>
+    <div className='app'>
+      <TheHeader />
+
+      <main className='main'>
+        <div className='left-side'>
+          <Form />
+        </div>
+        
+        <div className='right-side'>
+          <Filter />
+          <List />
+        </div>
+      </main>
     </div>
   )
 }

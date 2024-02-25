@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
+  min-width: 100vw;
+}
+
+.title {
+  font-size: 5.4rem;
+  font-weight: 900;
+  letter-spacing: 0.2rem;
+  color: #cd5c5c;
+}
+
+.title span {
+  color: #fecc1b;
+}
