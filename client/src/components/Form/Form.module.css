@@ -14,7 +14,7 @@ button:active {
   outline: none;
 }
 
-.root {
+.formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,12 +29,12 @@ button:active {
   color: #fff;
 }
 
-.root h3 {
+.formContainer h2 {
   margin-bottom: 2rem;
   font-size: 3rem;
 }
 
-.root label {
+.formContainer label {
   display: block;
   margin-bottom: 1rem;
 
@@ -43,7 +43,7 @@ button:active {
   cursor: pointer;
 }
 
-.root input {
+.formContainer input {
   display: inline-block;
   width: 90%;
   padding: 1rem;
@@ -55,7 +55,7 @@ button:active {
   /* font-size: 1rem; */
 }
 
-.root button {
+.formContainer button {
   display: inline-block;
   margin: 10px;
   padding: 10px 14px;
@@ -71,6 +71,6 @@ button:active {
   font-family: inherit;
 }
 
-.root button:hover {
+.formContainer button:hover {
   background-color: #0056b3;
 }

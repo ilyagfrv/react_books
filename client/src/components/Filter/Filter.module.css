@@ -1,4 +1,4 @@
-.root {
+.filterContainer {
   display: grid;
   align-items: center;
   justify-items: center;
@@ -13,7 +13,7 @@
   color: #fff;
 }
 
-.root input {
+.filterContainer input {
   display: inline-block;
   margin-right: 1rem;
   padding: 1rem;
@@ -21,17 +21,16 @@
   border-radius: 0.2rem;
 
   font-family: inherit;
-  /* font-size: 1rem; */
 }
 
-.root label {
+.filterContainer label {
   display: inline-block;
 
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-.root button {
+.filterContainer button {
   display: inline-block;
   padding: 0.8rem 1rem;
 
@@ -46,6 +45,6 @@
   font-family: inherit;
 }
 
-.root button:hover {
+.filterContainer button:hover {
   background-color: #0056b3;
 }

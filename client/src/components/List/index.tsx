@@ -1,23 +1,39 @@
+import { useAppDispatch, useAppSelector } from '../../redux/redux-hook'
+import { deleteBook } from '../../redux/books/actionCreators'
+
 import style from './List.module.css'
 
 export default function List() {
+  const dispatch = useAppDispatch()
+  const books = useAppSelector((state) => state.books)
+
+  const handleDeleteBook = (id: string) => {
+    dispatch(deleteBook(id))
+  }
+
   return (
-    <div className={style.root}>
-      <h2 className={style.title}>Book List</h2>
-      {/* <h3 className={style.subtitle}>No books yet.</h3> */}
+    <div className={style.listContainer}>
+      <h2>Book List</h2>
+      {books.length === 0 ? (
+        <h3>No books yet.</h3>
+      ) : (
+        <ul>
+          {books.map((book, i) => (
+            <li key={book.id}>
+              <h4>
+                {++i}. "{book.title}" by <strong>{book.author}</strong>
+              </h4>
 
-      <ul>
-        <li className={style.book}>
-          <h4>
-            1. "Book name" by <strong>Author name</strong>
-          </h4>
-
-          <div className={style.actions}>
-            <span className={style.icon}>icon</span>
-            <button className={style.deleteBtn}>Delete</button>
-          </div>
-        </li>
-      </ul>
+              <div className={style.actions}>
+                <span>icon</span>
+                <button onClick={() => handleDeleteBook(book.id)}>
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

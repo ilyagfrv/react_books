@@ -28,15 +28,15 @@ body {
   min-height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .main {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr) 2fr;
+  grid-template-columns: minmax(33rem, 1fr) 2fr;
   gap: 3rem;
   min-height: 100%;
   width: 100%;
   max-width: 120rem;
-  margin: 0 auto;
   padding-bottom: 5rem;
 }
