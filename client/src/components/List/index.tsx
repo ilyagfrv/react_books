@@ -1,15 +1,39 @@
+import { BiBookBookmark, BiSolidBookBookmark } from 'react-icons/bi'
+
 import { useAppDispatch, useAppSelector } from '../../redux/redux-hook'
-import { deleteBook } from '../../redux/books/actionCreators'
+import { deleteBook, toggleFavorite } from '../../redux/slices/booksSlice'
+import {
+  selectTitleFilter,
+  selectAuthorFilter,
+} from '../../redux/slices/filterSlice'
 
 import style from './List.module.css'
 
 export default function List() {
   const dispatch = useAppDispatch()
   const books = useAppSelector((state) => state.books)
+  const titleFilter = useAppSelector(selectTitleFilter)
+  const authorFilter = useAppSelector(selectAuthorFilter)
 
   const handleDeleteBook = (id: string) => {
     dispatch(deleteBook(id))
   }
+
+  const handleToggleFavorite = (id: string) => {
+    dispatch(toggleFavorite(id))
+  }
+
+  const filteredBooks = books.filter((book) => {
+    const matchesTitle = book.title
+      .toLowerCase()
+      .includes(titleFilter.toLowerCase())
+
+    const matchesAuthor = book.author
+      .toLowerCase()
+      .includes(authorFilter.toLowerCase())
+
+    return matchesTitle && matchesAuthor
+  })
 
   return (
     <div className={style.listContainer}>
@@ -18,15 +42,27 @@ export default function List() {
         <h3>No books yet.</h3>
       ) : (
         <ul>
-          {books.map((book, i) => (
+          {filteredBooks.map((book, i) => (
             <li key={book.id}>
-              <h4>
+              <p>
                 {++i}. "{book.title}" by <strong>{book.author}</strong>
-              </h4>
+              </p>
 
               <div className={style.actions}>
-                <span>icon</span>
-                <button onClick={() => handleDeleteBook(book.id)}>
+                {book.isFavorite ? (
+                  <BiSolidBookBookmark
+                    className={style.icon}
+                    onClick={() => handleToggleFavorite(book.id!)}
+                  />
+                ) : (
+                  <BiBookBookmark
+                    className={style.icon}
+                    onClick={() => handleToggleFavorite(book.id!)}
+                  />
+                )}
+                {/* </span> */}
+
+                <button onClick={() => handleDeleteBook(book.id!)}>
                   Delete
                 </button>
               </div>

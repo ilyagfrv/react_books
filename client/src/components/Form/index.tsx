@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useAppDispatch } from '../../redux/redux-hook'
-import { addBook } from '../../redux/books/actionCreators'
+import { addBook } from '../../redux/slices/booksSlice'
 
 import style from './Form.module.css'
 
-// import booksData from '../../data/books.json'
+import { createBookWithID } from '../../utilities/createBookWithID'
+import booksData from '../../data/books.json'
 
 export default function Form() {
   const dispatch = useAppDispatch()
@@ -17,17 +17,18 @@ export default function Form() {
     event.preventDefault()
 
     if (title && author) {
-      const book = {
-        title,
-        author,
-        id: uuidv4(),
-      }
-
-      dispatch(addBook(book))
+      dispatch(addBook(createBookWithID({ title, author })))
 
       setTitle('')
       setAuthor('')
     }
+  }
+
+  const handleAddRandomBook = () => {
+    const randomIndex = Math.floor(Math.random() * booksData.length)
+    const randomBook = booksData[randomIndex]
+
+    dispatch(addBook(createBookWithID(randomBook)))
   }
 
   return (
@@ -42,7 +43,7 @@ export default function Form() {
             id='title'
             placeholder='What book?'
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.currentTarget.value)}
           />
 
           <label htmlFor='author'>Author</label>
@@ -51,7 +52,7 @@ export default function Form() {
             id='author'
             placeholder='Who is the author?'
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            onChange={(e) => setAuthor(e.currentTarget.value)}
           />
 
           <button type='submit'>new Book</button>

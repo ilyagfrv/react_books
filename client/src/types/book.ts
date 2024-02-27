@@ -1,6 +1,7 @@
 export interface IBook {
   title: string
   author: string
-  isFavorite?: false
-  id: string
+  isFavorite?: boolean
+  id?: string
+  year?: number
 }
