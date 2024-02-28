@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { useAppDispatch } from '../../redux/redux-hook'
-import { addBook } from '../../redux/slices/booksSlice'
+import { addBook } from '../../redux/slices/bookSlice'
 
 import style from './Form.module.css'
 

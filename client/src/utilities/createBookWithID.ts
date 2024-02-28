@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
-import { IBook } from '../types/book'
+import { Book } from '../types/Book'
 
-export const createBookWithID = (book: IBook) => {
+export const createBookWithID = (book: Book) => {
   return {
     ...book,
     isFavorite: false,

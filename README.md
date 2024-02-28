@@ -1,4 +1,4 @@
-# 📋 Books Library Project
+# 📋 Book Library Project
 
 ## ⚙️ Tech Stack
 

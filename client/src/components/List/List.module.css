@@ -87,3 +87,7 @@
 .listContainer button:hover {
   background-color: #0056b3;
 }
+
+.highlight {
+  background-color: #007bff;
+}
