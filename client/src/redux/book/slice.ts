@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Book } from '../../types/Book'
+import { Book } from 'types/Book'
 
 const initialState: Book[] = []
 

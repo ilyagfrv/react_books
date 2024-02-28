@@ -1,12 +1,12 @@
 import * as React from 'react'
 
-import { useAppDispatch } from '../../redux/redux-hook'
-import { addBook } from '../../redux/slices/bookSlice'
-
 import style from './Form.module.css'
 
-import { createBookWithID } from '../../utilities/createBookWithID'
-import booksData from '../../data/books.json'
+import { useAppDispatch } from 'redux/redux-hook'
+import { addBook } from 'redux/book/slice'
+
+import { createBookWithID } from 'utilities/createBookWithID'
+import booksData from 'data/books.json'
 
 export default function Form() {
   const dispatch = useAppDispatch()

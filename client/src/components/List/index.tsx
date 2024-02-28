@@ -1,25 +1,23 @@
 import { BiBookBookmark, BiSolidBookBookmark } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
 
-import { useAppDispatch, useAppSelector } from '../../redux/redux-hook'
-import {
-  deleteBook,
-  toggleFavorite,
-  // selectBooks,
-} from '../../redux/slices/bookSlice'
+import style from './List.module.css'
+
+import { useAppDispatch } from 'redux/redux-hook'
+import { deleteBook, toggleFavorite } from 'redux/book/slice'
+import { selectBooks } from 'redux/book/selectors'
 import {
   selectTitleFilter,
   selectAuthorFilter,
   selectOnlyFavoriteFilter,
-} from '../../redux/slices/filterSlice'
-
-import style from './List.module.css'
+} from 'redux/filter/selectors'
 
 export default function List() {
   const dispatch = useAppDispatch()
-  const books = useAppSelector((state) => state.books)
-  const titleFilter = useAppSelector(selectTitleFilter)
-  const authorFilter = useAppSelector(selectAuthorFilter)
-  const onlyFavoriteFilter = useAppSelector(selectOnlyFavoriteFilter)
+  const books = useSelector(selectBooks)
+  const titleFilter = useSelector(selectTitleFilter)
+  const authorFilter = useSelector(selectAuthorFilter)
+  const onlyFavoriteFilter = useSelector(selectOnlyFavoriteFilter)
 
   const handleDeleteBook = (id: string) => {
     dispatch(deleteBook(id))

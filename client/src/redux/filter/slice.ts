@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Book } from '../../types/Book'
+import { Book } from 'types/Book'
 
 const initialState = {
   title: '',
@@ -25,11 +25,11 @@ const filterSlice = createSlice({
       return initialState
     },
   },
-  selectors: {
-    selectTitleFilter: (state) => state.title,
-    selectAuthorFilter: (state) => state.author,
-    selectOnlyFavoriteFilter: (state) => state.onlyFavorite,
-  },
+  // selectors: {
+  //   selectTitleFilter: (state) => state.title,
+  //   selectAuthorFilter: (state) => state.author,
+  //   selectOnlyFavoriteFilter: (state) => state.onlyFavorite,
+  // },
 })
 
 export const {
@@ -39,10 +39,10 @@ export const {
   resetFilters,
 } = filterSlice.actions
 
-export const {
-  selectTitleFilter,
-  selectAuthorFilter,
-  selectOnlyFavoriteFilter,
-} = filterSlice.selectors
+// export const {
+//   selectTitleFilter,
+//   selectAuthorFilter,
+//   selectOnlyFavoriteFilter,
+// } = filterSlice.selectors
 
 export default filterSlice.reducer

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import bookReducer from './slices/bookSlice'
-import filterReducer from './slices/filterSlice'
+import bookReducer from './book/slice'
+import filterReducer from './filter/slice'
 
 export const store = configureStore({
   reducer: {
@@ -9,5 +9,5 @@ export const store = configureStore({
   },
 })
 
-export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>

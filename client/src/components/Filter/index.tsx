@@ -1,23 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-import { useAppDispatch, useAppSelector } from '../../redux/redux-hook'
+import style from './Filter.module.css'
+
+import { useAppDispatch } from 'redux/redux-hook'
 import {
   setTitleFilter,
   setAuthorFilter,
   setOnlyFavoriteFilter,
   resetFilters,
+} from 'redux/filter/slice'
+import {
   selectTitleFilter,
   selectAuthorFilter,
   selectOnlyFavoriteFilter,
-} from '../../redux/slices/filterSlice'
-
-import style from './Filter.module.css'
+} from 'redux/filter/selectors'
 
 export default function Filter() {
   const dispatch = useAppDispatch()
-  const titleFilter = useAppSelector(selectTitleFilter)
-  const authorFilter = useAppSelector(selectAuthorFilter)
-  const onlyFavoriteFilter = useAppSelector(selectOnlyFavoriteFilter)
+  const titleFilter = useSelector(selectTitleFilter)
+  const authorFilter = useSelector(selectAuthorFilter)
+  const onlyFavoriteFilter = useSelector(selectOnlyFavoriteFilter)
 
   const handleTitleFilterChange = (e: React.FormEvent<HTMLInputElement>) => {
     dispatch(setTitleFilter(e.currentTarget.value))
