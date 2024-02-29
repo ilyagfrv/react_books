@@ -22,12 +22,8 @@ const bookSlice = createSlice({
       })
     },
   },
-  // selectors: {
-  //   selectBooks: (state) => state.books,
-  // },
 })
 
 export const { addBook, deleteBook, toggleFavorite } = bookSlice.actions
-// export const { selectBooks } = bookSlice.selectors
 
 export default bookSlice.reducer

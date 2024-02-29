@@ -25,11 +25,6 @@ const filterSlice = createSlice({
       return initialState
     },
   },
-  // selectors: {
-  //   selectTitleFilter: (state) => state.title,
-  //   selectAuthorFilter: (state) => state.author,
-  //   selectOnlyFavoriteFilter: (state) => state.onlyFavorite,
-  // },
 })
 
 export const {
@@ -38,11 +33,5 @@ export const {
   setOnlyFavoriteFilter,
   resetFilters,
 } = filterSlice.actions
-
-// export const {
-//   selectTitleFilter,
-//   selectAuthorFilter,
-//   selectOnlyFavoriteFilter,
-// } = filterSlice.selectors
 
 export default filterSlice.reducer

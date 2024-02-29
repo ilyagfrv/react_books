@@ -2,6 +2,7 @@ import { BiBookBookmark, BiSolidBookBookmark } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 
 import style from './List.module.css'
+import { Book } from 'types/Book'
 
 import { useAppDispatch } from 'redux/redux-hook'
 import { deleteBook, toggleFavorite } from 'redux/book/slice'
@@ -19,11 +20,11 @@ export default function List() {
   const authorFilter = useSelector(selectAuthorFilter)
   const onlyFavoriteFilter = useSelector(selectOnlyFavoriteFilter)
 
-  const handleDeleteBook = (id: string) => {
+  const handleDeleteBook = (id: Book['id']) => {
     dispatch(deleteBook(id))
   }
 
-  const handleToggleFavorite = (id: string) => {
+  const handleToggleFavorite = (id: Book['id']) => {
     dispatch(toggleFavorite(id))
   }
 
