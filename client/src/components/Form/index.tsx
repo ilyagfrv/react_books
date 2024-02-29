@@ -1,4 +1,5 @@
 import * as React from 'react'
+import axios from 'axios'
 
 import style from './Form.module.css'
 
@@ -31,6 +32,17 @@ export default function Form() {
     dispatch(addBook(createBookWithID(randomBook)))
   }
 
+  const handleAddRandomBookViaAPI = async () => {
+    try {
+      const res = await axios.get('http://localhost:4000/random-book')
+      if (res?.data?.title && res?.data?.author) {
+        dispatch(addBook(createBookWithID(res.data)))
+      }
+    } catch (error) {
+      console.log('Error fetching a book', error)
+    }
+  }
+
   return (
     <div className={style.formContainer}>
       <h2>Add a book</h2>
@@ -59,7 +71,9 @@ export default function Form() {
           <button type='button' onClick={handleAddRandomBook}>
             add Random
           </button>
-          <button type='button'>add random API</button>
+          <button type='button' onClick={handleAddRandomBookViaAPI}>
+            add random API
+          </button>
         </div>
       </form>
     </div>
