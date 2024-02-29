@@ -1,10 +1,9 @@
 import * as React from 'react'
-import axios from 'axios'
 
 import style from './Form.module.css'
 
 import { useAppDispatch } from 'redux/redux-hook'
-import { addBook } from 'redux/book/slice'
+import { addBook, fetchBook } from 'redux/book/slice'
 
 import { createBookWithID } from 'utilities/createBookWithID'
 import booksData from 'data/books.json'
@@ -32,15 +31,8 @@ export default function Form() {
     dispatch(addBook(createBookWithID(randomBook)))
   }
 
-  const handleAddRandomBookViaAPI = async () => {
-    try {
-      const res = await axios.get('http://localhost:4000/random-book')
-      if (res?.data?.title && res?.data?.author) {
-        dispatch(addBook(createBookWithID(res.data)))
-      }
-    } catch (error) {
-      console.log('Error fetching a book', error)
-    }
+  const handleAddRandomBookViaAPI = () => {
+    dispatch(fetchBook())
   }
 
   return (
