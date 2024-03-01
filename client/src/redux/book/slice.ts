@@ -3,26 +3,46 @@ import axios from 'axios'
 
 import { createBookWithID } from 'utilities/createBookWithID'
 import { Book } from 'types/Book'
+import { setError } from 'redux/error/slice'
 
-const initialState: Book[] = []
+type State = {
+  books: Book[]
+  isLoadingAPI: boolean
+}
 
-export const fetchBook = createAsyncThunk('books/fetchBook', async () => {
-  const res = await axios.get('http://localhost:4000/random-book')
-  return res.data
-})
+const initialState: State = {
+  books: [],
+  isLoadingAPI: false,
+}
+
+export const fetchBook = createAsyncThunk(
+  'books/fetchBook',
+  async (url: string, thunkAPI) => {
+    try {
+      const response = await axios.get(url)
+      return response.data
+    } catch (error) {
+      thunkAPI.dispatch(setError('There is some difficulties'))
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+)
 
 const bookSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
     addBook(state, action: PayloadAction<Book>) {
-      state.push(action.payload)
+      state.books.push(action.payload)
     },
     deleteBook(state, action: PayloadAction<Book['id']>) {
-      return state.filter((book) => book.id !== action.payload)
+      return {
+        ...state,
+        books: state.books.filter((book) => book.id !== action.payload),
+      }
     },
     toggleFavorite(state, action: PayloadAction<Book['id']>) {
-      return state.forEach((book) => {
+      state.books.forEach((book) => {
         if (book.id === action.payload) {
           book.isFavorite = !book.isFavorite
         }
@@ -30,11 +50,17 @@ const bookSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchBook.pending, (state, action) => {})
+    builder.addCase(fetchBook.pending, (state) => {
+      state.isLoadingAPI = true
+    })
     builder.addCase(fetchBook.fulfilled, (state, action) => {
+      state.isLoadingAPI = false
       if (action.payload.title && action.payload.author) {
-        state.push(createBookWithID(action.payload))
+        state.books.push(createBookWithID(action.payload))
       }
+    })
+    builder.addCase(fetchBook.rejected, (state) => {
+      state.isLoadingAPI = false
     })
   },
 })

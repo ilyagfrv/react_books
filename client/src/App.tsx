@@ -1,6 +1,6 @@
 import 'App.css'
 
-import { TheHeader, Form, Filter, List } from 'components'
+import { TheHeader, Form, Filter, List, Error } from 'components'
 
 export default function App() {
   return (
@@ -17,6 +17,7 @@ export default function App() {
           <List />
         </div>
       </main>
+      <Error />
     </div>
   )
 }
