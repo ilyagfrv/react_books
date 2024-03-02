@@ -30,10 +30,6 @@
   position: relative;
 }
 
-.listContainer li strong {
-  margin-left: 0.2rem;
-}
-
 .listContainer li::after {
   content: '';
   display: block;
@@ -49,6 +45,10 @@
   transform: translateX(-50%);
 }
 
+.separator {
+  margin: 0 0.5rem;
+}
+
 .actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,31 +61,10 @@
   height: 3rem;
   width: 3rem;
 
-  color: #d83bd2;
-  color: #f44250;
+  color: #d2691e;
 
   cursor: pointer;
   transition: color 0.1s linear;
-}
-
-.listContainer button {
-  display: inline-block;
-  justify-self: end;
-  padding: 0.8rem 1rem;
-
-  border: none;
-  border-radius: 3px;
-  background-color: #007bff;
-
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.1s linear;
-
-  font-family: inherit;
-}
-
-.listContainer button:hover {
-  background-color: #0056b3;
 }
 
 .highlight {

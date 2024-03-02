@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import style from './Filter.module.css'
+import Button from 'UI/button/Button'
 
 import { useAppDispatch } from 'redux/redux-hook'
 import {
@@ -62,9 +63,9 @@ export default function Filter() {
         Only Favorite
       </label>
 
-      <button type='button' onClick={handleResetFilters}>
+      <Button type='button' onClick={handleResetFilters}>
         Reset filters
-      </button>
+      </Button>
     </div>
   )
 }

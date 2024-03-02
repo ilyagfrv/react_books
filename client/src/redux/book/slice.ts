@@ -1,32 +1,18 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { createBookWithID } from 'utilities/createBookWithID'
-import { Book } from 'types/Book'
-import { setError } from 'redux/error/slice'
+import { createBookWithID } from 'utils/createBookwithID'
+import { Book } from 'types/book'
+import { fetchBook } from './asyncActions'
 
-type State = {
+type BookSlice = {
   books: Book[]
   isLoadingAPI: boolean
 }
 
-const initialState: State = {
+const initialState: BookSlice = {
   books: [],
   isLoadingAPI: false,
 }
-
-export const fetchBook = createAsyncThunk(
-  'books/fetchBook',
-  async (url: string, thunkAPI) => {
-    try {
-      const response = await axios.get(url)
-      return response.data
-    } catch (error) {
-      thunkAPI.dispatch(setError('There is some difficulties'))
-      return thunkAPI.rejectWithValue(error)
-    }
-  }
-)
 
 const bookSlice = createSlice({
   name: 'books',

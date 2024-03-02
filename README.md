@@ -6,5 +6,6 @@
 - Redux (+ Toolkit)
 - TypeScript
 - Express
+- Axios
 - CSS
 - Rsbuild

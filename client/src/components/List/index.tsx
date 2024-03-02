@@ -2,7 +2,8 @@ import { BiBookBookmark, BiSolidBookBookmark } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 
 import style from './List.module.css'
-import { Book } from 'types/Book'
+import { Book } from 'types/book'
+import Button from 'UI/button/Button'
 
 import { useAppDispatch } from 'redux/redux-hook'
 import { deleteBook, toggleFavorite } from 'redux/book/slice'
@@ -68,26 +69,24 @@ export default function List() {
           {filteredBooks.map((book, i) => (
             <li key={book.id}>
               <p>
-                {++i}. "{highlightMatch(book.title, titleFilter)}" by{' '}
+                {++i}. "{highlightMatch(book.title, titleFilter)}"{' '}
+                <span className={style.separator}>by</span>{' '}
                 <strong>{highlightMatch(book.author, authorFilter)}</strong>
               </p>
 
-              <div className={style.actions}>
+              <div
+                className={style.actions}
+                onClick={() => handleToggleFavorite(book.id!)}
+              >
                 {book.isFavorite ? (
-                  <BiSolidBookBookmark
-                    className={style.icon}
-                    onClick={() => handleToggleFavorite(book.id!)}
-                  />
+                  <BiSolidBookBookmark className={style.icon} />
                 ) : (
-                  <BiBookBookmark
-                    className={style.icon}
-                    onClick={() => handleToggleFavorite(book.id!)}
-                  />
+                  <BiBookBookmark className={style.icon} />
                 )}
 
-                <button onClick={() => handleDeleteBook(book.id!)}>
+                <Button onClick={() => handleDeleteBook(book.id!)}>
                   Delete
-                </button>
+                </Button>
               </div>
             </li>
           ))}

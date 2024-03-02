@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux'
 
 import style from './Form.module.css'
 
-import { useAppDispatch } from 'redux/redux-hook'
-import { addBook, fetchBook } from 'redux/book/slice'
-import { selectIsLoadingAPI } from 'redux/book/selectors'
-
-import { createBookWithID } from 'utilities/createBookWithID'
 import booksData from 'data/books.json'
+import { createBookWithID } from 'utils/createBookwithID'
+
+import { useAppDispatch } from 'redux/redux-hook'
+import { addBook } from 'redux/book/slice'
+import { fetchBook } from 'redux/book/asyncActions'
+import { selectIsLoadingAPI } from 'redux/book/selectors'
 
 export default function Form() {
   const dispatch = useAppDispatch()
@@ -64,7 +65,7 @@ export default function Form() {
 
         <button type='submit'>new Book</button>
         <button type='button' onClick={handleAddRandomBook}>
-          add Random
+          random Book
         </button>
 
         <button
@@ -78,7 +79,7 @@ export default function Form() {
               <FaSpinner className={style.spinner} />
             </>
           ) : (
-            'add random API'
+            'random API Book'
           )}
         </button>
       </form>
