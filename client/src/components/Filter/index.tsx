@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import style from './Filter.module.css'
-import Button from 'UI/button/Button'
+import { Button } from 'components'
 
 import { useAppDispatch } from 'redux/redux-hook'
 import {

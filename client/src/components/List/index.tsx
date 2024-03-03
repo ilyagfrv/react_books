@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import style from './List.module.css'
 import { Book } from 'types/book'
-import Button from 'UI/button/Button'
+import { Button } from 'components'
 
 import { useAppDispatch } from 'redux/redux-hook'
 import { deleteBook, toggleFavorite } from 'redux/book/slice'
