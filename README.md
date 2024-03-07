@@ -3,7 +3,7 @@
 ## ⚙️ Tech Stack
 
 - React
-- Redux (+ Toolkit)
+- Redux Toolkit
 - TypeScript
 - Express
 - Axios

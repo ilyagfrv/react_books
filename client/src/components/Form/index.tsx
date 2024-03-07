@@ -41,12 +41,15 @@ export default function Form() {
   }
 
   return (
-    <div className={style.formContainer}>
-      <h2>Add a book</h2>
+    <div className={style.container}>
+      <h2 className={style.title}>Add a book</h2>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title</label>
+        <label className={style.label} htmlFor='title'>
+          Title
+        </label>
         <input
+          className={style.input}
           type='text'
           id='title'
           placeholder='What book?'
@@ -54,8 +57,11 @@ export default function Form() {
           onChange={(e) => setTitle(e.currentTarget.value)}
         />
 
-        <label htmlFor='author'>Author</label>
+        <label className={style.label} htmlFor='author'>
+          Author
+        </label>
         <input
+          className={style.input}
           type='text'
           id='author'
           placeholder='Who is the author?'
@@ -63,12 +69,20 @@ export default function Form() {
           onChange={(e) => setAuthor(e.currentTarget.value)}
         />
 
-        <button type='submit'>new Book</button>
-        <button type='button' onClick={handleAddRandomBook}>
+        <button className={style.button} type='submit'>
+          new Book
+        </button>
+        
+        <button
+          className={style.button}
+          type='button'
+          onClick={handleAddRandomBook}
+        >
           random Book
         </button>
 
         <button
+          className={style.button}
           type='button'
           onClick={handleAddRandomBookViaAPI}
           disabled={isLoadingAPI}

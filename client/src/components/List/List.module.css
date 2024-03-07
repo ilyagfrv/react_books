@@ -1,72 +1,48 @@
-.listContainer {
-  padding: 3rem 0;
+.container {
+  padding: 4rem 2rem;
 
   border-radius: 0.5rem;
   background-color: #66cdaa;
   box-shadow: 5px 6px 8px 0px rgba(0, 0, 0, 0.4);
 
   text-align: center;
-  color: #fff;
 }
 
-.listContainer h2 {
+.title {
   margin-bottom: 3rem;
   font-size: 3rem;
 }
 
-.listContainer h3 {
+.subtitle {
   font-size: 2rem;
 }
 
-.listContainer li {
+.book {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: minmax(60rem, 3fr) repeat(2, 1fr);
   align-items: center;
-  padding: 2rem 3rem;
+  padding: 2rem 0;
+
+  border-bottom: 1px solid #20b2aa;
 
   font-size: 1.8rem;
   text-align: left;
-
-  position: relative;
-}
-
-.listContainer li::after {
-  content: '';
-  display: block;
-  height: 0.5px;
-  width: 100%;
-  max-width: 90%;
-
-  background-color: #20b2aa;
-
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .separator {
-  margin: 0 0.5rem;
-}
-
-.actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  align-items: center;
-  justify-self: end;
+  margin: 0 0.7rem;
 }
 
 .icon {
+  display: block;
   height: 3rem;
   width: 3rem;
+  margin-left: 2rem;
 
-  color: #d2691e;
-
+  color: #703133;
   cursor: pointer;
-  transition: color 0.1s linear;
 }
 
 .highlight {
-  background-color: #007bff;
+  background-color: #811ddb;
 }

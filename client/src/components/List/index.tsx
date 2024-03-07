@@ -60,34 +60,29 @@ export default function List() {
   }
 
   return (
-    <div className={style.listContainer}>
-      <h2>Book List</h2>
+    <div className={style.container}>
+      <h2 className={style.title}>Book List</h2>
       {books.length === 0 ? (
-        <h3>No books yet.</h3>
+        <h3 className={style.subtitle}>No books yet.</h3>
       ) : (
         <ul>
           {filteredBooks.map((book, i) => (
-            <li key={book.id}>
+            <li className={style.book} key={book.id}>
               <p>
-                {++i}. "{highlightMatch(book.title, titleFilter)}"{' '}
-                <span className={style.separator}>by</span>{' '}
+                {++i} "{highlightMatch(book.title, titleFilter)}"
+                <span className={style.separator}>by</span>
                 <strong>{highlightMatch(book.author, authorFilter)}</strong>
               </p>
 
-              <div
-                className={style.actions}
-                onClick={() => handleToggleFavorite(book.id!)}
-              >
+              <div onClick={() => handleToggleFavorite(book.id!)}>
                 {book.isFavorite ? (
                   <BiSolidBookBookmark className={style.icon} />
                 ) : (
                   <BiBookBookmark className={style.icon} />
                 )}
-
-                <Button onClick={() => handleDeleteBook(book.id!)}>
-                  Delete
-                </Button>
               </div>
+
+              <Button onClick={() => handleDeleteBook(book.id!)}>Delete</Button>
             </li>
           ))}
         </ul>

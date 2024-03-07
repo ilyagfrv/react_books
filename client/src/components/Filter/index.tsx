@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useSelector } from 'react-redux'
 
 import style from './Filter.module.css'
@@ -40,30 +40,36 @@ export default function Filter() {
   }
 
   return (
-    <div className={style.filterContainer}>
+    <div className={style.container}>
       <input
+        className={style.input}
         type='text'
         placeholder='search by title...'
         value={titleFilter}
         onChange={handleTitleFilterChange}
       />
       <input
+        className={style.input}
         type='text'
         placeholder='search by author...'
         value={authorFilter}
         onChange={handleAuthorFilterChange}
       />
 
-      <label>
+      <label className={style.label}>
         <input
           type='checkbox'
           checked={onlyFavoriteFilter}
           onChange={handleOnlyFavoriteChange}
         />{' '}
-        Only Favorite
+        Favorite
       </label>
 
-      <Button type='button' onClick={handleResetFilters}>
+      <Button
+        className={style.button}
+        type='button'
+        onClick={handleResetFilters}
+      >
         Reset filters
       </Button>
     </div>

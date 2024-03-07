@@ -1,22 +1,18 @@
-.filterContainer {
+.container {
   display: grid;
+  grid-template-columns: repeat(2, 1fr) repeat(2, 2fr);
+  gap: 2rem;
   align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(4, 1fr);
   margin-bottom: 3rem;
   padding: 4rem 2rem;
 
   border-radius: 0.5rem;
   background-color: #66cdaa;
   box-shadow: 5px 6px 8px 0px rgba(0, 0, 0, 0.4);
-
-  color: #fff;
 }
 
-.filterContainer input {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: 1rem;
+.input {
+  padding: 1rem 2rem;
 
   border-radius: 0.2rem;
 
@@ -24,9 +20,17 @@
   font-size: 1.3rem;
 }
 
-.filterContainer label {
-  display: inline-block;
+.input::placeholder {
+  font-size: 1.3rem;
+}
 
-  font-size: 1.5rem;
+.label {
+  justify-self: center;
+
+  font-size: 1.6rem;
   cursor: pointer;
+}
+
+.container button {
+  justify-self: end;
 }

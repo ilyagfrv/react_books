@@ -17,6 +17,7 @@ export default function App() {
           <List />
         </div>
       </main>
+
       <Error />
     </div>
   )
