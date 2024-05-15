@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./client
+    ports:
+      - 8080:8080
+
+    develop:
+      watch:
+        - path: ./client/package.json
+          action: rebuild
+        - path: ./client/package-lock.json
+          action: rebuild
+        - path: ./client
+          target: /app
+          action: sync
+  api:
+    build: ./api
+    ports:
+      - 4000:4000
+
+    develop:
+      watch:
+        - path: ./api/package.json
+          action: rebuild
+        - path: ./api/package-lock.json
+          action: rebuild
+        - path: ./api
+          target: /app
+          action: sync
